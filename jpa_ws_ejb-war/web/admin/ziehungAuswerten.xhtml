@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="../resources/template/admin_template_bs_1.xhtml">
+        <ui:define name="header">
+            <h1>Ziehung auswerten</h1>
+        </ui:define>
+        <ui:define name="content">
+            <h:form id="ziehungauswerten" prependId="false">
+                <h:panelGrid id="panelGrid1" styleClass="table ziehungauswerten" columnClasses="font-weight-bold" columns="2" >
+                    <h:outputText id="test1" value="Anzahl Scheine:" rendered="#{ziehungAuswertenView.editMode}" />
+                    <h:outputFormat value="{0} (davon bearbeitet: {1})">
+                        <f:param value="#{ziehungAuswertenController.ziehungAuswertenData_neu.anzahlScheine}"/>
+                        <f:param value="#{ziehungAuswertenController.ziehungAuswertenData_neu.anzahlScheineBearbeitet}"/>
+                    </h:outputFormat>
+
+                    <h:outputText value="Anzahl Tipps:"/>
+                    <h:outputFormat value="{0} von {1}">
+                        <f:param value="#{ziehungAuswertenController.ziehungAuswertenData_neu.anzahlTipps}"/>
+                        <f:param value="#{ziehungAuswertenController.ziehungAuswertenData_neu.anzahlTipps}"/>
+                    </h:outputFormat>
+                </h:panelGrid>                        
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Gewinnklassen 6 aus 49</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p:panelGrid id="gklTable" styleClass="table table-bordered gkl" columns="3">
+                                    <h:outputText value="Gewinnkl." />
+                                    <h:outputFormat value="Anz. Gewinner" style="text-align: center;"/>
+                                    <h:outputFormat value="Quote" style="text-align: center;"/>
+                                    <c:forEach var="i" begin="1" end="9">
+                                        <h:outputText value="Klasse ${i}:"/>
+                                        <h:panelGroup>
+                                            <h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData_neu.gklLotto[i]}" rendered="#{!ziehungAuswertenView.editMode}" />
+                                            <h:inputText value="#{ziehungAuswertenController.ziehungAuswertenData_neu.gklLotto[i]}" rendered="#{ziehungAuswertenView.editMode}"/>
+                                        </h:panelGroup>
+                                        <h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData_neu.quoteGklLotto[i] / 100}">
+                                            <f:convertNumber type="currency" locale="de-DE" groupingUsed="true" minFractionDigits="2" maxFractionDigits="2" currencySymbol="€"/>
+                                        </h:outputText>
+
+                                    </c:forEach>
+                                </p:panelGrid>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Gewinnklassen Spiel 77</h3>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-bordered gkl">
+                                    <tr>
+                                        <th style="text-align: center;"><h:outputText value="Gewinnkl." style="font-bold"/></th>
+                                        <th style="text-align: center;"><h:outputFormat value="Anz. Gewinner" style="font-bold"/></th>
+                                        <th style="text-align: center;"><h:outputFormat value="Quote" style="font-bold"/></th>
+                                    </tr>
+                                    <c:forEach var="i" begin="1" end="7">
+                                        <tr>
+                                            <td><h:outputText value="Klasse ${i}:"/></td>
+                                            <td class="text-right"><h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData_neu.gklSpiel77[i]}"/> </td>
+                                            <td class="text-right"><h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData_neu.quoteGklSpiel77[i] / 100}">
+                                                    <f:convertNumber type="currency" locale="de-DE" groupingUsed="true" minFractionDigits="2" maxFractionDigits="2" currencySymbol="€"/>
+                                                </h:outputText>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Gewinnklassen Super 6</h3>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-bordered gkl">
+                                    <tr>
+                                        <th style="text-align: center;"><h:outputText value="Gewinnkl." style="font-bold"/></th>
+                                        <th style="text-align: center;"><h:outputFormat value="Anz. Gewinner" style="font-bold"/></th>
+                                        <th style="text-align: center;"><h:outputFormat value="Quote" style="font-bold"/></th>
+                                    </tr>
+                                    <c:forEach var="i" begin="1" end="6">
+                                        <tr>
+                                            <td><h:outputText value="Klasse ${i}:"/></td>
+                                            <td class="text-right"><h:outputFormat value="#{ziehungAuswertenController.ziehungAuswertenData_neu.gklSuper6[i]}"/></td>
+                                            <td class="text-right"><h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData_neu.quoteGklSuper6[i] / 100}">
+                                                    <f:convertNumber type="currency" locale="de-DE" groupingUsed="true" minFractionDigits="2" maxFractionDigits="2" currencySymbol="€"/>
+                                                </h:outputText>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h:panelGrid styleClass="table ziehungauswerten" columnClasses="font-weight-bold" columns="2">
+                    <h:outputText value="Laufzeit der Auswertung:"/>
+                    <h:outputFormat value="{0} Sekunden">
+                        <f:param value="#{ziehungAuswertenController.ziehungAuswertenData_neu.auswertungslaufzeit}"/>
+                    </h:outputFormat>
+                </h:panelGrid>
+                <h:panelGrid styleClass="table ziehungauswerten" columnClasses="font-weight-bold" columns="2">
+                    <h:commandButton value="Auswerten" styleClass="btn btn-success" action="#{ziehungAuswertenController.auswerten}"/>
+                    <h:panelGroup>
+                        <h:outputLabel for="chkEditMode" value="Edit-Modus"/>&nbsp;&nbsp;
+                        <p:selectBooleanCheckbox id="chkEditMode" value="#{ziehungAuswertenView.editMode}">
+                            <p:ajax  event="change" update="test1" />
+                        </p:selectBooleanCheckbox></h:panelGroup>
+                </h:panelGrid>
+            </h:form>
+        </ui:define>     
+        <ui:define name="footer">
+            <p>&copy; 2016 - Bernd Behrensdorf - All rights reversed</p>
+        </ui:define>
+    </ui:composition>
+</html>

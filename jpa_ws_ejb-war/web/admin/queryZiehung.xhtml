@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="../resources/template/admin_template_bs_1.xhtml">
+        <ui:define name="header">
+            <h1>Ziehung nach Datum suchen</h1>
+        </ui:define>
+        <ui:define name="content">
+
+
+            <h:form id="ziehungerfassen" prependId="false">
+                <h:panelGrid styleClass="table table-striped" columns="3">
+                    <h:outputText value="Ziehungsdatum:"/>
+                    <h:outputFormat value="{0, date, dd.MM.yyyy}">
+                        <f:param value="#{queryZiehungController.ziehungsdatum}" />
+                    </h:outputFormat>
+                    <h:outputText value=""/>
+
+                    <h:outputText value="Zahlen 6 aus 49:"/>
+                    <h:outputText value="#{queryZiehungController.zahlenAlsBits}">
+                        <f:converter converterId="ziehungConverter"/>
+                    </h:outputText>
+                    <h:outputText value=""/>
+
+                    <h:outputText value="Superzahl:"/>
+                    <h:outputText value="#{queryZiehungController.superzahl}"/>
+                    <h:outputText value=""/>
+
+                    <h:outputText value="Spiel 77:"/>
+                    <h:outputFormat value="{0, number, 0000000}">
+                        <f:param value="#{queryZiehungController.spiel77}"/>
+                    </h:outputFormat>
+                    <h:outputText value=""/>
+
+                    <h:outputText value="Super 6:"/>
+                    <h:outputFormat value="{0, number, 000000}">
+                        <f:param value="#{queryZiehungController.super6}"/>
+                    </h:outputFormat>
+                    <h:outputText value=""/>
+
+                    <h:outputLabel value="gesuchtes Ziehungsdatum:" for="suchdatum"/>
+                    <h:inputText id="suchdatum" value="#{queryZiehungController.suchdatum}" required="true" >
+                        <f:convertDateTime for="suchdatum" pattern="d.M.y"/>
+                        <f:validator validatorId="ziehungDatumValidator" />
+                    </h:inputText>
+                    <h:message for="suchdatum"/>
+
+                </h:panelGrid>
+                <h:commandButton value="Suchen" styleClass="btn btn-success" action="#{queryZiehungController.senden}"/>
+            </h:form>
+            <br />
+
+        </ui:define>     
+        <ui:define name="footer">
+            <p>&copy; 2016 - Bernd Behrensdorf - All rights reversed</p>
+        </ui:define>
+    </ui:composition></html>
+

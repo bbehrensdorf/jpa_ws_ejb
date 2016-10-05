@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html" xml:lang="en" lang="en"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:body>
+
+        <ui:composition template="resources/template/template_bs_1.xhtml">
+            <ui:define name="header">
+                <h1>Anmeldung</h1>
+            </ui:define>
+
+
+            <ui:define name="content" >
+                <form method="POST" action="j_security_check" prependId="false">
+                    <h:panelGrid styleClass="table table-striped" columns="2">
+                        <h:outputLabel id="userLabel" for="j_username" value="User: " />
+                        <input id="j_username" name="j_username" type="text" />
+                        <h:outputLabel id="passwortLabel" for="j_password" value="Passwort: " />
+                        <input id="j_password" type="password" name="j_password" />
+                    </h:panelGrid>
+                    <h:commandButton value="Login" styleClass="btn btn-success" />
+                </form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

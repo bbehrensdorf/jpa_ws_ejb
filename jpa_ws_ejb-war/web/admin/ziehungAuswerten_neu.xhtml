@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="../resources/template/admin_template_bs_1.xhtml">
+        <ui:define name="header">
+            <h1>Ziehung auswerten</h1>
+        </ui:define>
+        <ui:define name="content">
+
+            <h:form id="ziehungauswerten" prependId="false">
+                <div id="outer-panel" class="panel panel-success">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            Ziehung vom: <h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData1.ziehung.ziehungsdatum}">
+                                <f:convertDateTime pattern="dd.MM.yyyy" />
+
+                            </h:outputText><h:outputText value=" (ZiehungId: #{ziehungAuswertenController.ziehungAuswertenData1.ziehungId})"/></h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <p:outputPanel id="scheine-tipps" styleClass="panel panel-primary" layout="block">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title">Scheine und Tipps</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:panelGrid id="scheine-tipps-grid" styleClass="table ziehungauswerten" columnClasses="font-weight-bold, text-right, text-right" columns="3">
+                                            <h:outputText value="Lottoscheine (Anzahl/Einsatz):"/>
+                                            <h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData1.anzahlScheine}">
+                                                <f:convertNumber groupingUsed="true"/>
+
+                                            </h:outputText>
+
+                                            <h:outputText 
+                                                value="#{(ziehungAuswertenController.ziehungAuswertenData1.ziehung.einsatzLotto + ziehungAuswertenController.ziehungAuswertenData1.ziehung.einsatzSpiel77 + ziehungAuswertenController.ziehungAuswertenData1.ziehung.einsatzSuper6) / 100}">
+                                                <f:convertNumber type="currency" locale="de-DE" groupingUsed="true" minFractionDigits="2" maxFractionDigits="2" currencySymbol="€"/>
+
+                                            </h:outputText>
+
+                                            <h:outputText value="Tipps 6 aus 49 (Anzahl/Einsatz):"/>
+                                            <h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData1.anzahlTipps}">
+                                                <f:convertNumber groupingUsed="true"/>
+                                            </h:outputText>
+                                            <h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData1.ziehung.einsatzLotto / 100}">
+                                                <f:convertNumber type="currency" locale="de-DE" groupingUsed="true" minFractionDigits="2" maxFractionDigits="2" currencySymbol="€"/>
+
+                                            </h:outputText>
+                                            <h:outputText value="Spiel 77 (Anzahl/Einsatz):"/>
+                                            <h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData1.anzahlSpiel77}">
+                                                <f:convertNumber groupingUsed="true"/>
+                                            </h:outputText>
+                                            <h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData1.ziehung.einsatzSpiel77 / 100}">
+                                                <f:convertNumber type="currency" locale="de-DE" groupingUsed="true" minFractionDigits="2" maxFractionDigits="2" currencySymbol="€"/>
+
+                                            </h:outputText>
+                                            <h:outputText value="Super 6 (Anzahl/Einsatz):"/>
+                                            <h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData1.anzahlSuper6}">
+                                                <f:convertNumber groupingUsed="true"/>
+                                            </h:outputText>
+                                            <h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData1.ziehung.einsatzSuper6 / 100}">
+                                                <f:convertNumber type="currency" locale="de-DE" groupingUsed="true" minFractionDigits="2" maxFractionDigits="2" currencySymbol="€"/>
+
+                                            </h:outputText>
+                                        </h:panelGrid>     
+                                    </div>
+                                    <div class="panel-footer">
+                                        <p:commandButton id="initBtn" value="Ziehungsdaten neu einlesen" styleClass="btn btn-success" 
+                                                         update="ziehungauswerten"
+                                                         actionListener="#{ziehungAuswertenController.ziehungAuswertenData1.initZiehung()}"
+                                                         />
+                                        <p:commandButton id="resetBtn" value="Reset" styleClass="btn btn-success" 
+                                                         update="ziehungauswerten"
+                                                         actionListener="#{ziehungAuswertenController.ziehungAuswertenData1.reset()}"/>
+                                    </div>
+                                </p:outputPanel>
+                                <h:outputText  value="Bearbeitungsverlauf: "/><h:outputText id="bearbeitungsverlauf" value="#{ziehungAuswertenController.ziehungAuswertenData1.auswertungsMeldung}"/>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title">Ziehungszahlen</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:panelGrid styleClass="table ziehungauswerten" columnClasses="font-weight-bold, text-right" columns="2">
+                                            <h:outputText value="Zahlen 6 aus 49:"/>
+                                            <h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData1.lottoZahlenAsString}" />
+                                            <h:outputText value="Superzahl:"/>
+                                            <h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData1.ziehung.superzahl}"/>
+                                            <h:outputText value="Spiel 77:"/>
+                                            <h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData1.ziehung.spiel77}">
+                                                <f:convertNumber pattern="0000000"/>
+                                            </h:outputText>
+                                            <h:outputText value="Super 6:"/>
+                                            <h:outputText value="#{ziehungAuswertenController.ziehungAuswertenData1.ziehung.super6}">
+                                                <f:convertNumber pattern="000000"/>
+                                            </h:outputText>
+
+                                        </h:panelGrid>     
+                                    </div>
+
+                                </div>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title">Bearbeitungsstand</h5>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:panelGrid styleClass="table ziehungauswerten" columnClasses="font-weight-bold, text-right" columns="2">
+                                            <h:outputText value="Lottoscheine bearbeitet:"/>
+                                            <h:outputText id="anzahlbearbeitet" value="#{ziehungAuswertenController.ziehungAuswertenData1.anzahlScheineBearbeitet}" >
+                                                <f:convertNumber groupingUsed="true"/>
+                                            </h:outputText>
+
+
+                                        </h:panelGrid>     
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <p>
+                            <p:commandButton  id="analyzebtn" value="Auswerten" styleClass="btn btn-success" 
+                                              widgetVar="awButton" update="msgs" type="button" disabled="#{ziehungAuswertenController.disabled()}" 
+                                              onclick="PF('awButton').disable(); setMsgAwStart(); analyze();" 
+                                              oncomplete="PF('awButton').enable();"/>&nbsp;&nbsp;
+                            <p:commandButton id="checkBtn" value="Check Auswertung" 
+                                             styleClass="btn btn-success"
+                                             update="bearbeitungsverlauf, anzahlbearbeitet"
+                                             actionListener="#{ziehungAuswertenController.checkAuswertung()}"
+
+                                             />&nbsp;&nbsp;
+
+
+                        </p>
+
+                    </div>
+                    <p:blockUI block="scheine-tipps" trigger="initBtn, resetBtn" >
+                        <p:graphicImage value="#{resource['images/ajax_loader_blue_128.gif']}"></p:graphicImage>
+                    </p:blockUI>
+                </div>
+                <p:remoteCommand name="analyze" update="msgs, bearbeitungsverlauf, anzahlbearbeitet, analyzebtn" actionListener="#{ziehungAuswertenController.analyze()}" />
+                <p:remoteCommand name="setMsgAwStart" update="bearbeitungsverlauf" actionListener="#{ziehungAuswertenController.setMeldungStart()}" />
+                <p:growl id="msgs" showDetail="true" autoUpdate="true" />
+            </h:form>
+        </ui:define>     
+    </ui:composition>
+</html>

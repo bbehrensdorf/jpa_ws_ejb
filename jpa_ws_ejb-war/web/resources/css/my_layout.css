@@ -1,0 +1,278 @@
+@import url(http://fonts.googleapis.com/css?family=Muli|Titillium+Web:400,600);
+
+
+body {
+    overflow-x: hidden;
+}
+
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 200px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 200px;
+    width: 0;
+    height: 100%;
+    margin-left: -200px;
+    overflow-y: auto;
+    background: #fff;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    border-right: solid 1px #999999;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 200px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -200px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: #8BBD26;
+    /*background: rgba(33,33,33,0.2);*/
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: #8BBD26;
+}
+h1 {
+    margin: 1em 0 0.5em 0;
+    color: #333;
+    font-weight: 600;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 36px;
+    line-height: 40px;
+    padding: 15px 15px 15px 15%;
+    box-shadow: 
+        inset 0 0 0 1px rgba(53,86,129, 0.4), 
+        inset 0 0 5px rgba(53,86,129, 0.5),
+        inset -285px 0 35px white;
+    border-radius: 0 10px 0 10px;
+    /* background: #fff url(../images/lotto_logo.png) no-repeat center left; */
+}
+
+h2 {
+    margin: 1em 0 0.5em 0;
+    font-weight: normal;
+    position: relative;
+    text-shadow: 0 -1px rgba(0,0,0,0.6);
+    font-size: 28px;
+    line-height: 40px;
+    background: #3A5D6A;
+    background: rgba(53,86,129, 0.8);
+    border: 1px solid #fff;
+    padding: 5px 15px;
+    color: white;
+    border-radius: 0 10px 0 10px;
+    box-shadow: inset 0 0 5px rgba(53,86,129, 0.5);
+    font-family: 'Muli', sans-serif;
+}
+
+h3 {
+    margin: 0.8em 0 0.5em 0;
+    color: #333;
+    font-weight: 600;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 22px;
+    line-height: 40px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(53,86,129, 0.3);
+}
+
+h4 {
+    margin: 1em 0 0.5em 0;
+    font-weight: 600;
+    font-family: 'Titillium Web', sans-serif;
+    position: relative;
+    font-size: 18px;
+    line-height: 20px;
+    color: #788699;
+    font-family: 'Muli', sans-serif;
+}
+
+
+img.flag {
+    vertical-align:middle;
+    padding: 3px 10px 5px 0;
+}
+img{border:none;}
+
+img.edit_button {
+
+    height: 34px;
+
+}
+
+/* -------------- navigavtion------------- */
+nav {
+    font-size: 22px;
+    color:#3A5D6A;
+    background: #fff;
+    width: 200px; 
+    position: fixed;
+    left: 0;
+    top: 0;
+    height:100%;
+    padding:40px 40px 20px 0;
+    text-align: right;
+    border-right: solid #E5E1C8 3px;
+}
+
+nav li.user{
+    font-weight: 600;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    color:#6a3a44;
+}
+
+nav ul { list-style-type: none; }
+nav li {padding-bottom: 10px;}
+nav a {
+    color: #3A5D6A;
+    border-right: solid #3A5D6A 2px;
+    text-decoration: none;
+    line-height:25px;
+    padding-right: 10px;
+}
+nav a:visited {
+    color:#9BADA7;
+    border-right: solid #9BADA7 2px;}
+nav a:hover {
+    color: #C5C5AF;
+
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 200px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 200px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        padding: 0.25rem;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+    }
+
+    tr td:first-child {
+        width:15em;
+    }
+
+    table.ziehungauswerten tr td:first-child {
+        width:12em;
+    }
+/*
+    table.ziehungauswerten3 tr td {
+        width:30%;
+    }
+*/
+    table.with-message tr td:last-child {
+        color:red;
+    }
+/*
+    tbody tr:nth-child(odd) {
+        background: #eee;
+    }
+*/
+
+    table.gkl tr td:last-child {
+        min-width:12rem;
+    }
+
+    ul {
+        list-style: square;
+    }
+
+    .font-weight-bold {
+        font-weight: bold;
+    }
+
+}

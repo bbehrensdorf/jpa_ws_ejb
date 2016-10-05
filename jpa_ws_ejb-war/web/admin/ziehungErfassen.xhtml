@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="../resources/template/admin_template_bs_1.xhtml">
+        <ui:define name="header">
+            <h1>#{msg.ziehung_editieren}</h1>
+        </ui:define>
+        <ui:define name="content">
+            <h:form id="ziehungerfassen" prependId="false">
+                <h:panelGrid styleClass="table table-striped with-message" columns="3">
+                    <h:outputLabel value="#{msg['ziehungsdatum']}:" for="ziehungsdatum"/>
+                    <h:inputText id="ziehungsdatum" value="#{ziehungController.ziehungsdatum}" required="true" >
+                        <f:convertDateTime for="ziehungsdatum" pattern="dd.MM.yyyy"/>
+                        <f:validator validatorId="ziehungDatumValidator" />
+                    </h:inputText>
+                    <h:message for="ziehungsdatum"/>
+
+                    <h:outputLabel value="#{msg['zahlen_6aus49']}:" for="zahlen6aus49"/>
+                    <h:inputText id="zahlen6aus49" value="#{ziehungController.zahlen6aus49}" required="true">
+                        <f:converter converterId="ziehungConverter"/>
+                        <f:validator validatorId="ziehungZahlenValidator" />
+                    </h:inputText>
+                    <h:message for="zahlen6aus49"/>
+
+                    <h:outputLabel value="#{msg['superzahl']}:" for="superzahl"/>
+                    <h:inputText id="superzahl" value="#{ziehungController.superzahl}" required="true">
+                        <f:validateLongRange minimum="0" maximum="9"/>
+                    </h:inputText>
+                    <h:message for="superzahl"/>
+
+                    <h:outputLabel value="#{msg['spiel77']}:" for="spiel77"/>
+                    <h:inputText id="spiel77" value="#{ziehungController.spiel77}" required="true" size="7" maxlength="7">
+                        
+                    </h:inputText>
+                    <h:message for="spiel77" /> 
+
+                    <h:outputLabel value="#{msg['super6']}:" for="super6"/>
+                    <h:inputText id="super6" value="#{ziehungController.super6}" required="true">
+                        <f:validateLength minimum="6" maximum="6"/>
+                    </h:inputText>
+                    <h:message for="super6"/> 
+
+                </h:panelGrid>
+                <br />
+                <p>
+                    <h:commandButton value="#{msg.senden}" styleClass="btn btn-success" action="#{ziehungController.senden}"/>
+                </p>
+            </h:form>
+        </ui:define>     
+        <ui:define name="footer">
+            <p>&copy; 2016 - Bernd Behrensdorf - All rights reversed</p>
+        </ui:define>
+    </ui:composition>
+</html>
+

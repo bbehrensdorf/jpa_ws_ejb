@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:composition template="../resources/template/user_template_bs_1.xhtml">
+        <ui:define name="header">
+            <h1>Lottoschein einreichen</h1>
+        </ui:define>
+        <ui:define name="content">
+            <h:form id="lottoscheineinreichen" prependId="false">
+                <h:panelGrid styleClass="table table-striped with-message" columns="3">
+                    <h:outputLabel value="#{msg['kundeId']}:" for="kundeid"/>
+                    <h:inputText id="kundeid" value="#{lottoscheinController.kundeId}" required="true">
+                         <f:validator validatorId="kundeIdValidator" />
+                        
+                    </h:inputText>
+                    <h:message for="kundeid"/>
+                    <h:outputLabel value="#{msg['losnummer']}:" for="losnummer"/>
+                    <h:inputText id="losnummer" value="#{lottoscheinController.losNummer}" required="true">
+                    </h:inputText>
+                    <h:message for="losnummer"/>
+                </h:panelGrid>
+
+                <h:panelGrid styleClass="table" columns="4">
+                    <h:outputLabel value="#{msg['ziehungstage']}:" for="ziehungstage"/>
+                    <h:selectOneRadio id="ziehungstage" required="true" value="#{lottoscheinController.ziehungstage}">
+                        <f:selectItem itemValue="1" itemLabel="#{msg['isSamstag']}" />
+                        <f:selectItem itemValue="2" itemLabel="#{msg['isMittwoch']}" />
+                        <f:selectItem itemValue="3" itemLabel="#{msg['isSamstagMittwoch']}" />
+                    </h:selectOneRadio>
+                </h:panelGrid>
+
+                <h:panelGrid styleClass="table table-striped" columns="3">
+                    <h:outputLabel value="#{msg['laufzeit']}:" for="laufzeit"/>
+                    <h:inputText id="laufzeit" value="#{lottoscheinController.laufzeit}" required="true">
+                    </h:inputText>
+                    <h:message for="laufzeit"/>
+                    
+                    <h:outputLabel value="#{msg['isSpiel77']}:" for="isspiel77"/>
+                    <h:selectBooleanCheckbox id="isspiel77" value="#{lottoscheinController.isSpiel77}" />
+                    <h:message for="isspiel77"/>
+
+                    <h:outputLabel value="#{msg['isSuper6']}:" for="issuper6"/>
+                    <h:selectBooleanCheckbox id="issuper6" value="#{lottoscheinController.isSuper6}" />
+                    <h:message for="issuper6"/>
+
+                    <h:outputLabel value="#{msg['anzahlTipps']}:" for="anzahltipps"/>
+                    <h:inputText id="anzahltipps" value="#{lottoscheinController.anzahlTipps}" required="true">
+                    </h:inputText>
+                    <h:message for="anzahltipps"/>
+                </h:panelGrid>
+                <br />
+                <p>
+                    <h:commandButton value="#{msg.senden}" styleClass="btn btn-success" action="#{lottoscheinController.senden()}"/>
+                </p>
+            </h:form>
+        </ui:define>     
+        <ui:define name="footer">
+            <p>&copy; 2016 - Bernd Behrensdorf - All rights reversed</p>
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" >
+    <ui:composition template="../resources/template/admin_template_bs_1.xhtml">
+        <ui:define name="header">
+            <h1>Datenbank befüllen</h1>
+        </ui:define>
+        <ui:define name="content">
+            <h:form prependId="false">
+                <p> Wenn du auf "Datenbank befüllen" drückst,<br />
+                    werden allerlei Testdaten in die Datenbank geschrieben!</p>
+
+                    <p>
+                        <h:commandButton value="Datenbank befüllen" styleClass="btn btn-danger" 
+                                         action="#{populateController.populateDatabase()}" />
+                    </p>
+            </h:form>
+        </ui:define>     
+        <ui:define name="footer">
+            <p>  &#169; 2016 - Bernd Behrensdorf - All rights reversed</p>
+        </ui:define>
+    </ui:composition>
+</html>
+

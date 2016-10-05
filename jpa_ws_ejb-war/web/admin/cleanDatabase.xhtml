@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="../resources/template/admin_template_bs_1.xhtml">
+        <ui:define name="header">
+            <h1>Datenbank leeren</h1>
+        </ui:define>
+        <ui:define name="content">
+            <h:form id="clean" prependId="false">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Datenbank leeren</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p> Vorsicht! Wenn du auf den Knopf "Datenbank leeren" drückst,<br />
+                            werden sämtliche Daten aus der Datenbank gelöscht!</p>
+                    </div>
+                    <div class="panel-footer">
+                        <h:commandButton value="Datenbank leeren" styleClass="btn btn-danger" 
+                                         action="#{cleanController.cleanDatabase()}"/>
+                    </div>
+                </div>
+            </h:form>
+
+            <h:form id="reset1" prependId="false">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Ziehungsauswertung löschen</h4>
+                    </div>
+
+                    <div class="panel-body">
+                        <p> Vorsicht! Wenn du auf den Knopf "Ziehungsauswertung zurücksetzen" drückst,<br />
+                            wird die aktuelle Ziehungsauswertung gelöscht!</p>
+                        <p>
+                            <h:selectBooleanCheckbox id="mitlottoscheinziehung" value="#{cleanController.resetLottoscheinZiehung}" />
+                            <h:outputLabel  style="font-weight:normal; padding-left: 1em" value="Lottoscheinziehungen ebenfalls zurücksetzen" for="mitlottoscheinziehung" /> 
+                        </p>
+                        <p>
+                        </p>
+                    </div>
+                    <div class="panel-footer">
+                        <h:commandButton value="Ziehungsauswertung zurücksetzen" styleClass="btn btn-danger" 
+                                         action="#{cleanController.resetZiehungsAuswertung()}"/>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>     
+        <ui:define name="footer">
+            <p>&copy; 2016 - Bernd Behrensdorf - All rights reversed</p>
+        </ui:define>
+    </ui:composition>
+</html>
+

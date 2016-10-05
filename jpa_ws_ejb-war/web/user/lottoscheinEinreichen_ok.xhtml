@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+    <ui:composition template="../resources/template/user_template_bs_1.xhtml">
+        <ui:define name="header">
+            <h1>Vielen Dank!</h1>
+        </ui:define>
+        <ui:define name="content">
+            <h3>Ihr Lottoschein wurde erfolgreich eingereicht.</h3>
+            <h4>Dies sind Ihre Daten:</h4>
+            <h:panelGrid styleClass="table table-striped" columnClasses="font-weight-bold" columns="2">
+                <h:outputText value="Ihr Name:" />
+                <h:outputText id="name" value="#{lottoscheinController.lottoschein.kundeId.vorname} #{lottoscheinController.lottoschein.kundeId.name}" />
+
+                <h:outputText value="Losnummer:" />
+                <h:outputText id="losnummer" value="#{lottoscheinController.losNummer}" >
+                    <f:convertNumber pattern="0000000"/>
+                </h:outputText>
+
+                <h:outputText value="Teilnahme am Ziehungstag:" />
+                <h:outputText value="#{lottoscheinController.ziehungstage eq 3 ? 'mittwochs und samstag' : lottoscheinController.ziehungstage eq 1 ? 'nur samstags' : 'nur mittwochs'}" />
+
+                <h:outputText value="#{msg['laufzeit']}:" />
+                <h:outputText id="laufzeit" value="#{lottoscheinController.laufzeit} Woche#{lottoscheinController.laufzeit > 1 ? 'n' : ''}" />
+
+                <h:outputText value="Erste Teilnahme:" />
+                <h:outputText id="ersteziehung" value="#{lottoscheinController.ersteZiehung}" >
+                    <!--                    <f:convertDateTime pattern="EEEE dd.MMMM yyyy" />-->
+                    <f:convertDateTime dateStyle="full" locale="de"/>
+                </h:outputText>
+
+                <h:outputText value="#{msg['isSpiel77']}:" />
+                <h:outputText value="#{lottoscheinController.isSpiel77 ? 'Ja' : 'Nein'}" />
+
+                <h:outputText value="#{msg['isSuper6']}:"/>
+                <h:outputText value="#{lottoscheinController.isSuper6 ? 'Ja' : 'Nein'}" />
+
+            </h:panelGrid>
+            <h4>Sie haben #{lottoscheinController.anzahlTipps} Lottofelder ausgefüllt:</h4>
+            <h:panelGrid styleClass="table table-striped" columns="2" columnClasses="font-weight-bold">
+                <c:forEach var="tipp" items="#{lottoscheinController.tippsAsStringArray}" varStatus="status">
+
+
+                    <h:outputText value="Tipp Nr. #{status.index + 1}" />
+                    <h:outputText escape="false" value="#{tipp}" />
+                </c:forEach>
+            </h:panelGrid>
+            <h:form>
+                <h:commandButton value="Quittung erzeugen" styleClass="btn btn-success" action="#{lottoscheinController.generateQuittung()}"/>
+
+            </h:form>
+            <p><h:link value="&raquo;&nbsp;zum Kundenbereich" outcome="index.faces" /></p>
+
+
+        </ui:define>     
+        <ui:define name="footer">
+            <p>&copy; 2016 - Bernd Behrensdorf - All rights reversed</p>
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,410 @@
+@import url(http://fonts.googleapis.com/css?family=Muli|Titillium+Web:400,600);
+
+/* reset */
+* {
+margin: 0;
+padding: 0;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+header, footer, section, aside, nav, article { display: block;}
+
+body {
+background-color: #E5E1C8;
+font-size: 0.95em;
+font-family: Arial, SunSans-Regular, Sans-Serif;
+color: #564b47;
+}
+pre, code {
+font-size: 1.3em;
+}
+
+a {color: #3A5D6A;}
+/*a:visited {color:#ff6677;}
+a:hover {color: #564b47;}
+a:active { color:#3A5D6A;} */
+
+/* -----  header -----   */
+
+h1 {
+    margin: 1em 0 0.5em 0;
+    color: #333;
+    font-weight: 600;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 36px;
+    line-height: 40px;
+    padding: 15px 15px 15px 15%;
+    box-shadow: 
+        inset 0 0 0 1px rgba(53,86,129, 0.4), 
+        inset 0 0 5px rgba(53,86,129, 0.5),
+        inset -285px 0 35px white;
+    border-radius: 0 10px 0 10px;
+    /* background: #fff url(../images/lotto_logo.png) no-repeat center left; */
+}
+ 
+h2 {
+    margin: 1em 0 0.5em 0;
+    font-weight: normal;
+    position: relative;
+    text-shadow: 0 -1px rgba(0,0,0,0.6);
+    font-size: 28px;
+    line-height: 40px;
+    background: #3A5D6A;
+    background: rgba(53,86,129, 0.8);
+    border: 1px solid #fff;
+    padding: 5px 15px;
+    color: white;
+    border-radius: 0 10px 0 10px;
+    box-shadow: inset 0 0 5px rgba(53,86,129, 0.5);
+    font-family: 'Muli', sans-serif;
+}
+ 
+h3 {
+    margin: 0.8em 0 0.5em 0;
+    color: #333;
+    font-weight: 600;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 22px;
+    line-height: 40px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(53,86,129, 0.3);
+}
+ 
+h4 {
+    margin: 1em 0 0.5em 0;
+    font-weight: 600;
+    font-family: 'Titillium Web', sans-serif;
+    position: relative;
+    font-size: 18px;
+    line-height: 20px;
+    color: #788699;
+    font-family: 'Muli', sans-serif;
+}
+
+
+img.flag {
+	vertical-align:middle;
+	padding: 3px 10px 5px 0;
+	}
+img{border:none;}
+
+img.edit_button {
+	
+	height: 34px;
+	
+}
+
+/* -------------- navigavtion------------- */
+nav {
+	font-size: 22px;
+	color:#3A5D6A;
+	background: #fff;
+	width: 250px; 
+	position: fixed;
+	left: 0;
+	top: 0;
+	height:100%;
+	padding:40px 40px 20px 0;
+	text-align: right;
+	border-right: solid #E5E1C8 3px;
+}
+
+nav li.user{
+	  font-weight: 600;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 20px;
+    color:#6a3a44;
+}
+
+nav ul { list-style-type: none; }
+nav li {padding-bottom: 10px;}
+nav a {
+color: #3A5D6A;
+border-right: solid #3A5D6A 2px;
+text-decoration: none;
+line-height:25px;
+padding-right: 10px;
+}
+nav a:visited {
+	color:#9BADA7;
+	border-right: solid #9BADA7 2px;}
+nav a:hover {
+	color: #C5C5AF;
+
+}
+
+/* ----------------- content--------------------- */
+
+
+section#content {
+	padding: 20px;
+	margin:0 0 0 250px;
+	background-color: #fff;
+	max-width: 800px;
+   min-width:550px;
+   min-height: 900px;
+   border-left: solid #769897;
+    
+}
+p, pre{
+padding:  0 0 20px;
+line-height:1.5em;
+}
+
+/* ----------header for logo-------------- */
+header {
+	padding:0 0 0 0;
+	background: url(../images/lotto_logo.png) no-repeat top right;
+}
+	
+header img{ padding: 0 0 10px;}
+
+/* -----------footer--------------------------- */
+footer { border-top: 1px solid #769897;
+
+padding: 20px;
+clear:both;
+}
+
+
+
+/* ------- input -------------------- */
+
+.inputTipp {
+    display: block;
+    font-size: 28px;
+    text-align: right;
+    padding: 5px;
+    border: 4px solid #F1B720;
+    border-radius: 5px;
+    color: #333;
+    transition: all 0.3s ease-out;
+}
+ 
+.inputTipp:hover {
+    border-radius: 8px
+}
+ 
+.inputTipp:focus {
+    outline: none;
+    border-radius: 8px;
+    border-color: #EBD292;
+}
+
+/* -------- input button --------  */
+
+.inputButton {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    background: #3A5D6A;
+    font-size: 26px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+ 
+.inputButton:hover {
+    background: #0AF
+}
+
+
+/* ---------- inline links ---------------------- */
+
+.inline-link {
+    display: inline-block;
+    margin: 0 0.2em;
+    padding: 3px;
+    background: #769897;
+    border-radius: 2px;
+    transition: all 0.3s ease-out; 
+    /* Font styles */
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+ 
+.inline-link:hover {
+    background: #53A7EA
+}
+ 
+.inline-link:active {
+    background: #C4E1F8
+}
+ 
+.inline-link:visited {
+    background: #D6A47C
+}
+
+
+/* -------- form -------------------------- */
+
+.form-l {
+    /* Size and position */
+    width: 300px;
+    margin: 60px auto 30px;
+    padding: 20px;
+    position: relative;
+ 
+    /* Font styles */
+    font-family: 'Raleway', 'Lato', Arial, sans-serif;
+    color: #E5E1C8;
+    background-color: #3A5D6A;
+    border-radius: 5px;
+    
+}
+ 
+.form-l h3 {
+    margin: 0.8em 0 0.5em 0;
+    color: #E5E1C8;
+    font-weight: 600;
+    font-family: 'Titillium Web', sans-serif;
+    line-height: 40px;
+    text-transform: uppercase;
+    font-size: 22px;
+    padding-bottom: 20px;
+}
+
+.form-l input[type=text],
+.form-l input[type=password] {
+    /* Size and position */
+    width: 100%;
+    padding: 8px 4px 8px 10px;
+    margin-bottom: 15px;
+ 
+    /* Styles */
+    border: 1px solid #769897; /* Fallback */
+    background: #3A5D6A;
+    border-radius: 2px;
+    box-shadow: 
+        0 1px 0 rgba(255,255,255,0.2), 
+        inset 0 1px 1px rgba(0,0,0,0.1);
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+ 
+    /* Font styles */
+    font-family: 'Raleway', 'Lato', Arial, sans-serif;
+    color: #fff;
+    font-size: 16px;
+}
+
+.form-l input::-webkit-input-placeholder {
+    color: #9BADA7;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+}
+ 
+.form-l input:-moz-placeholder {
+    color: #9BADA7;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+}
+ 
+.form-l input:-ms-input-placeholder {
+    color: #9BADA7;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.form-l input[type=text]:hover,
+.form-l input[type=password]:hover {
+    border-color: #E5E1C8;
+}
+ 
+.form-l input[type=text]:focus,
+.form-l input[type=password]:focus,
+.form-l input[type=submit]:focus {
+    box-shadow: 
+        0 1px 0 rgba(255,255,255,0.2), 
+        inset 0 1px 1px rgba(0,0,0,0.1),
+        0 0 0 3px rgba(255,255,255,0.15);
+    outline: none;
+}
+ 
+/* Fallback */
+.no-boxshadow .form-l input[type=text]:focus,
+.no-boxshadow .form-l input[type=password]:focus {
+    outline: 1px solid white;
+}
+
+.form-l input[type=submit] {
+    /* Size and position */
+    width: 100%;
+    padding: 8px 5px;
+     
+    /* Styles */
+    background: linear-gradient(rgba(99,64,86,0.5), rgba(76,49,65,0.7));    
+    border-radius: 5px;
+    border: 1px solid #4e3043;
+    box-shadow: 
+        inset 0 1px rgba(255,255,255,0.4), 
+        0 2px 1px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+ 
+    /* Font styles */
+    color: #E5E1C8;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Raleway', 'Lato', Arial, sans-serif;
+}
+ 
+.form-l input[type=submit]:hover {
+    box-shadow: 
+        inset 0 1px rgba(255,255,255,0.2), 
+        inset 0 20px 30px rgba(99,64,86,0.5);
+}
+ 
+/* Fallback */
+.no-boxshadow .form-l input[type=submit]:hover {
+    background: #594642;
+}
+
+.form-l label {
+    padding: 0 0 5px 2px;
+    cursor: pointer;
+}
+ 
+.form-l label:hover ~ input {
+    border-color: #E5E1C8;
+}
+ 
+.no-placeholder .form-l label {
+    display: block;
+}
+
+/* ------  Tables ------  */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  padding: 0.25rem;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+
+tbody tr:nth-child(odd) {
+  background: #eee;
+}
+
+
+
+.formbutton1 {
+    padding: 10px;
+    margin: 10px;
+    background: #3A5D6A;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    
+    border-radius: 6px;
+}
+
+.formbutton1:hover {
+    background: #3A0000;
+}

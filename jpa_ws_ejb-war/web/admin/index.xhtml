@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html" xml:lang="en" lang="en">
+    <h:body>
+        <ui:composition template="/resources/template/admin_template_bs_1.xhtml">
+            <ui:define name="header">
+                <h1>Projekt "Lotto"</h1>
+            </ui:define>
+            <ui:define name="content" >
+                <h3>Adminbereich</h3>
+                <h4>Bitte auswählen:</h4>
+                <div class="list-group"> 
+                    <h:link value="Ziehungsdaten editieren" outcome="ziehungErfassen.faces" styleClass="list-group-item"/>
+                    <h:link value="Datanbank leeren" outcome="cleanDatabase.faces" styleClass="list-group-item"/>
+                    <h:link value="Datenbank befüllen" outcome="populateDatabase.faces" styleClass="list-group-item"/>
+                    <h:link value="Ziehung suchen" outcome="queryZiehung.faces" styleClass="list-group-item"/>
+                    <h:link value="Ziehung auswerten" outcome="ziehungAuswerten.faces" styleClass="list-group-item"/>
+                    <h:outputLink value="/jpa_ws_ejb-war/PopulateLottoscheinServlet" styleClass="list-group-item">Testlottoscheine erzeugen</h:outputLink>
+
+                    <h:outputLink value="/jpa_ws_ejb-war/LogoutServlet" styleClass="list-group-item">Logout</h:outputLink>
+                    
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

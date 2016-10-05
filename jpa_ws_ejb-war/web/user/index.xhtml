@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html" xml:lang="en" lang="en">
+      
+    <h:body>
+        <ui:composition template="/resources/template/user_template_bs_1.xhtml" >
+            <ui:define name="header" >
+                <h1>Projekt "Lotto"</h1>
+            </ui:define>
+            <ui:define name="content" >
+                <h3>Kundenbereich</h3>
+                <h4>Bitte auswählen:</h4>
+                <div class="list-group"> 
+                    <h:link value="Lottoschein einreichen" outcome="lottoscheinEinreichen.faces" styleClass="list-group-item"/>
+                </div>
+                <p><a href="/jpa_ws_ejb-war/LogoutServlet">Logout</a></p>
+                    
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

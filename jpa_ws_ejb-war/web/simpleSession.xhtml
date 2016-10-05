@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html" xml:lang="en" lang="en"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="resources/template/template.xhtml">
+        <ui:define name="header">
+            <h1>simple session</h1>
+        </ui:define>
+        <ui:define name="content">
+            <h:form>
+                <h:panelGrid columns="1">
+                    <h:outputLabel value="sessionid"></h:outputLabel>
+                    <h:outputLabel value="#{simpleSessionController.sessionId}"></h:outputLabel>
+                    <h:outputLabel value="remote user"></h:outputLabel>
+                    <h:outputLabel value="#{simpleSessionController.remoteUser}"></h:outputLabel>
+                    <h:outputLabel value="clickCounter"></h:outputLabel>
+                    <h:outputLabel value="#{simpleSessionController.counter}"></h:outputLabel>
+                    <h:commandButton value="click"
+                                     action="#{simpleSessionController.countClicks()}"/>
+                    <h:commandButton value="#{simpleSessionController.logInOutlabel()}"
+                                     action="#{simpleSessionController.logInOut()}"/>
+                    <h:commandButton value="invalidate session"
+                                     action="#{simpleSessionController.invalidateSession()}"/>
+                </h:panelGrid>
+                <br/>
+            </h:form>
+        </ui:define>
+        <ui:define name="footer">
+            footer
+        </ui:define>
+    </ui:composition>
+</html>
